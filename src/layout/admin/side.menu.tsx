@@ -30,6 +30,7 @@ function SideMenu() {
 			<List>
 				{[
 					{ name: 'Users', path: '/admin/users' },
+					{ name: 'Users V2 (UseLoader)', path: '/admin/users-v2' },
 					{ name: 'Roles', path: '/admin/roles' },
 				].map((item, index) => (
 					<ListItem key={index} disablePadding>
