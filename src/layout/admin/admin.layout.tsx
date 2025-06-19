@@ -13,7 +13,7 @@ function AdminLayout() {
 						<SideMenu />
 					</Grid>
 
-					<Grid size={8}>
+					<Grid size={10}>
 						<Box
 							sx={{
 								display: 'flex',

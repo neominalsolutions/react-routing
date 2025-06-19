@@ -4,10 +4,17 @@ import UserPage from '../pages/admin/users/page';
 import UserDetail from '../pages/admin/users/id/page';
 import UserPageV2 from '../pages/admin/users/pagev2';
 import { getUsers } from '../api/users/user.api';
+import AuthRouteGuard from '../guards/auth.route.guard';
+
+// Not: AuthRouteGuard dan geçmeden AdminLayout component içerisinde protected routelara gidemezsin.
 
 const adminRoutes: RouteObject = {
 	path: 'admin',
-	Component: AdminLayout,
+	element: (
+		<AuthRouteGuard>
+			<AdminLayout />
+		</AuthRouteGuard>
+	),
 	children: [
 		{
 			index: true, // ilk bu path gelince açılacak ana sayfa
