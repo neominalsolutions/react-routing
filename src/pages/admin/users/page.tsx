@@ -49,7 +49,6 @@ function UserPage() {
 			headerName: 'İşlemler',
 			minWidth: 400,
 			renderCell(params: any) {
-				console.log('params', params.row);
 				return (
 					<Button color="primary" onClick={() => setSelectedRow(params.row)}>
 						Kullanıcı Makaleleri
@@ -109,10 +108,22 @@ function UserPage() {
 						</Grid>
 					</DialogTitle>
 					<DialogContent>
-						<List>
+						<List
+							sx={{
+								padding: 1,
+							}}
+						>
 							{userPostsState.map((item: any) => {
 								return (
-									<ListItem key={item.id}>
+									<ListItem
+										style={{
+											margin: 2,
+											border: '1px solid blue',
+											backgroundColor: '#f5f5f5',
+											borderRadius: 2,
+										}}
+										key={item.id}
+									>
 										<ListItemText>{item.body}</ListItemText>
 									</ListItem>
 								);
