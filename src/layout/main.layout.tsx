@@ -1,5 +1,5 @@
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import Navbar from './navbar';
 
 function MainLayout() {
 	return (
@@ -10,7 +10,9 @@ function MainLayout() {
 				justifyContent: 'center',
 			}}
 		>
-			<Typography variant="h3">Main Layout</Typography>
+			{/* <Typography variant="h3">Main Layout</Typography> */}
+
+			<Navbar />
 		</Container>
 	);
 }

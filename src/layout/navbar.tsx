@@ -5,10 +5,17 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from './drawer';
+import { useState } from 'react';
+import Container from '@mui/material/Container';
 
 function NavBar() {
+	// drawer göster gizle işlemi
+	const [visible, setVisible] = useState(false);
+
 	const handleDrawerToggle = () => {
 		console.log('drawer');
+		setVisible(!visible);
 	};
 
 	const navItems = [
@@ -20,33 +27,43 @@ function NavBar() {
 	];
 
 	return (
-		<AppBar component="nav">
-			<Toolbar>
-				<IconButton
-					color="inherit"
-					aria-label="open drawer"
-					edge="start"
-					onClick={handleDrawerToggle}
-					sx={{ mr: 2, display: { sm: 'none' } }}
-				>
-					<MenuIcon />
-				</IconButton>
-				<Typography
-					variant="h6"
-					component="div"
-					sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-				>
-					MUI
-				</Typography>
-				<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-					{navItems.map((item, index) => (
-						<Button key={index} sx={{ color: '#fff' }}>
-							{item.name}
-						</Button>
-					))}
-				</Box>
-			</Toolbar>
-		</AppBar>
+		<>
+			<AppBar component="nav">
+				<Toolbar>
+					<IconButton
+						color="inherit"
+						aria-label="open drawer"
+						edge="start"
+						onClick={handleDrawerToggle}
+						sx={{ mr: 2, display: { sm: 'none' } }}
+					>
+						<MenuIcon />
+					</IconButton>
+					<Typography
+						variant="h6"
+						component="div"
+						sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+					>
+						MUI
+					</Typography>
+					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+						{navItems.map((item, index) => (
+							<Button key={index} sx={{ color: '#fff' }}>
+								{item.name}
+							</Button>
+						))}
+					</Box>
+				</Toolbar>
+			</AppBar>
+
+			{/* visible true ise domda göster değilse gösterme */}
+
+			{visible && (
+				<Container maxWidth="xl">
+					<Drawer />
+				</Container>
+			)}
+		</>
 	);
 }
 
