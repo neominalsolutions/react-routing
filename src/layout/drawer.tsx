@@ -5,6 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router';
 
 const Drawer = () => {
 	const navItems = [
@@ -17,6 +18,7 @@ const Drawer = () => {
 
 	return (
 		<Box
+			width={'100%'}
 			sx={{
 				textAlign: 'center',
 				display: { lg: 'none', md: 'none', xl: 'none', sm: 'none' },
@@ -30,7 +32,7 @@ const Drawer = () => {
 				{navItems.map((item, index) => (
 					<ListItem key={index} disablePadding>
 						<ListItemButton sx={{ textAlign: 'center' }}>
-							<ListItemText primary={item.name} />
+							<ListItemText primary={<Link to={item.path}>{item.name}</Link>} />
 						</ListItemButton>
 					</ListItem>
 				))}

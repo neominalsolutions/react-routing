@@ -8,10 +8,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from './drawer';
 import { useState } from 'react';
 import Container from '@mui/material/Container';
+import { useNavigate } from 'react-router';
 
 function NavBar() {
 	// drawer göster gizle işlemi
 	const [visible, setVisible] = useState(false);
+
+	const navigate = useNavigate(); // uygulama içerisinde dinamik yönlememizi sağlayan hook.
 
 	const handleDrawerToggle = () => {
 		console.log('drawer');
@@ -24,6 +27,7 @@ function NavBar() {
 			path: '/',
 		},
 		{ name: 'About', path: '/about' },
+		{ name: 'Admin', path: '/admin' },
 	];
 
 	return (
@@ -48,7 +52,11 @@ function NavBar() {
 					</Typography>
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 						{navItems.map((item, index) => (
-							<Button key={index} sx={{ color: '#fff' }}>
+							<Button
+								onClick={() => navigate(item.path)}
+								key={index}
+								sx={{ color: '#fff' }}
+							>
 								{item.name}
 							</Button>
 						))}
