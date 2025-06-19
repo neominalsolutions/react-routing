@@ -1,17 +1,9 @@
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import { Outlet, type RouteObject } from 'react-router';
+import { type RouteObject } from 'react-router';
+import AdminLayout from '../layout/admin.layout';
 
 const adminRoutes: RouteObject = {
 	path: 'admin',
-	element: (
-		<>
-			<Container>
-				<Typography>Admin Layout</Typography>
-				<Outlet />
-			</Container>
-		</>
-	),
+	Component: AdminLayout,
 	children: [
 		{
 			index: true, // ilk bu path gelince açılacak ana sayfa
