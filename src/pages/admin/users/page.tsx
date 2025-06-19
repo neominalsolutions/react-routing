@@ -1,20 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
-import { getPostsByUserId, getUsers } from '../../../api/users/user.api';
-import { DataGrid, GridCloseIcon } from '@mui/x-data-grid';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
+import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import DialogActions from '@mui/material/DialogActions';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
+import { DataGrid, GridCloseIcon } from '@mui/x-data-grid';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
+import { getPostsByUserId, getUsers } from '../../../api/users/user.api';
 
 function UserPage() {
 	const [userState, setUserState] = useState([]);
@@ -46,7 +47,16 @@ function UserPage() {
 
 	const columns = [
 		{ field: 'id', headerName: 'ID', minWidth: 200 },
-		{ field: 'name', headerName: 'İsim', minWidth: 200 },
+		{
+			field: 'name',
+			headerName: 'İsim',
+			minWidth: 200,
+			renderCell: (params: any) => (
+				<Link to={`/admin/users/${params.row['id']}`}>
+					{params.row['name']}
+				</Link>
+			),
+		},
 		{ field: 'email', headerName: 'E-Posta', minWidth: 400 },
 		{
 			field: 'actions',
