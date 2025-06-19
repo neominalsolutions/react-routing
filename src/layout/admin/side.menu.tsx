@@ -6,7 +6,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
+import './side.menu.css';
 
 function SideMenu() {
 	return (
@@ -35,7 +36,18 @@ function SideMenu() {
 				].map((item, index) => (
 					<ListItem key={index} disablePadding>
 						<ListItemButton>
-							<ListItemText primary={<Link to={item.path}>{item.name}</Link>} />
+							<ListItemText
+								primary={
+									<NavLink
+										className={({ isActive, isPending }) =>
+											isPending ? 'pending' : isActive ? 'active' : ''
+										}
+										to={item.path}
+									>
+										{item.name}
+									</NavLink>
+								}
+							/>
 						</ListItemButton>
 					</ListItem>
 				))}

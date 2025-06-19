@@ -1,0 +1,16 @@
+.active  {
+  font-weight:300;
+  color: red;
+  text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+.pending {
+    font-style: italic;
+    color:greenyellow;
+    text-decoration: none;
+}
