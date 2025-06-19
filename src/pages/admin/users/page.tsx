@@ -14,11 +14,13 @@ import DialogActions from '@mui/material/DialogActions';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function UserPage() {
 	const [userState, setUserState] = useState([]);
 	const [selectedRow, setSelectedRow] = useState();
 	const [userPostsState, setUserPostState] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		// 1.yöntem
@@ -33,8 +35,10 @@ function UserPage() {
 
 		// async callback func 2.yöntem
 		const loadData = async () => {
+			setLoading(true);
 			const data = await getUsers();
 			setUserState(data);
+			setLoading(false);
 		};
 
 		loadData();
@@ -75,15 +79,33 @@ function UserPage() {
 
 	return (
 		<>
-			<Box
-				sx={{
-					width: '100vw',
-				}}
-			>
-				<DataGrid rows={userState} columns={columns}></DataGrid>
-			</Box>
+			{loading ? (
+				<>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'row',
+							justifyContent: 'center',
+							minHeight: '100vh',
+							alignItems: 'center',
+						}}
+					>
+						<CircularProgress />
+					</Box>
+				</>
+			) : (
+				<>
+					<Box
+						sx={{
+							width: '100vw',
+						}}
+					>
+						<DataGrid rows={userState} columns={columns}></DataGrid>
+					</Box>
 
-			<Divider />
+					<Divider />
+				</>
+			)}
 
 			<Box
 				sx={{
