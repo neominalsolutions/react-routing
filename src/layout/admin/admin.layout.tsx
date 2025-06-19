@@ -8,7 +8,7 @@ function AdminLayout() {
 	return (
 		<>
 			<Container maxWidth={'xl'}>
-				<Grid container spacing={2}>
+				<Grid container>
 					<Grid size={2}>
 						<SideMenu />
 					</Grid>
@@ -16,7 +16,6 @@ function AdminLayout() {
 					<Grid size={8}>
 						<Box
 							sx={{
-								padding: 5,
 								display: 'flex',
 								flexDirection: 'row',
 								justifyContent: 'left',

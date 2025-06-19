@@ -13,6 +13,7 @@ import Divider from '@mui/material/Divider';
 import DialogActions from '@mui/material/DialogActions';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 function UserPage() {
 	const [userState, setUserState] = useState([]);
@@ -75,41 +76,56 @@ function UserPage() {
 
 	return (
 		<>
-			<DataGrid rows={userState} columns={columns}></DataGrid>
-			<Divider />
-			<Dialog
-				onClose={() => setSelectedRow(undefined)}
-				open={selectedRow ? true : false}
+			<Box
+				sx={{
+					width: '100vw',
+				}}
 			>
-				<DialogTitle>
-					<Grid container>
-						<Grid size={11}>
-							<Typography variant="h5"> Kullanıcı Postu</Typography>
+				<DataGrid rows={userState} columns={columns}></DataGrid>
+			</Box>
+
+			<Divider />
+
+			<Box
+				sx={{
+					width: '100vw',
+					height: '100vh',
+				}}
+			>
+				<Dialog
+					onClose={() => setSelectedRow(undefined)}
+					open={selectedRow ? true : false}
+				>
+					<DialogTitle>
+						<Grid container>
+							<Grid size={11}>
+								<Typography variant="h5"> Kullanıcı Postu</Typography>
+							</Grid>
+							<Grid size={1}>
+								<Typography sx={{ cursor: 'pointer' }}>
+									<GridCloseIcon onClick={() => setSelectedRow(undefined)} />
+								</Typography>
+							</Grid>
 						</Grid>
-						<Grid size={1}>
-							<Typography sx={{ cursor: 'pointer' }}>
-								<GridCloseIcon onClick={() => setSelectedRow(undefined)} />
-							</Typography>
-						</Grid>
-					</Grid>
-				</DialogTitle>
-				<DialogContent>
-					<List>
-						{userPostsState.map((item: any) => {
-							return (
-								<ListItem key={item.id}>
-									<ListItemText>{item.body}</ListItemText>
-								</ListItem>
-							);
-						})}
-					</List>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => setSelectedRow(undefined)} color="primary">
-						Kapat
-					</Button>
-				</DialogActions>
-			</Dialog>
+					</DialogTitle>
+					<DialogContent>
+						<List>
+							{userPostsState.map((item: any) => {
+								return (
+									<ListItem key={item.id}>
+										<ListItemText>{item.body}</ListItemText>
+									</ListItem>
+								);
+							})}
+						</List>
+					</DialogContent>
+					<DialogActions>
+						<Button onClick={() => setSelectedRow(undefined)} color="primary">
+							Kapat
+						</Button>
+					</DialogActions>
+				</Dialog>
+			</Box>
 		</>
 	);
 }
