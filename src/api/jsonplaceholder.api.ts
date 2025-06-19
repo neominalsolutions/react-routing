@@ -13,6 +13,7 @@ const jsonPlaceholderApi = axios.create({
 
 // her başarılı request loglamak için buraya gir
 const onRequestSuccess = (config: InternalAxiosRequestConfig<any>) => {
+	console.log('request', config);
 	return config;
 };
 
@@ -22,6 +23,7 @@ const onRequestError = (error: any) => {
 
 // her başarılı response loglamak için buraya gir
 const onReponseSuccess = (response: AxiosResponse) => {
+	console.log('response', response);
 	return response;
 };
 
@@ -34,18 +36,21 @@ jsonPlaceholderApi.interceptors.request.use(onRequestSuccess, onRequestError);
 jsonPlaceholderApi.interceptors.response.use(onReponseSuccess, onResponseError);
 
 // base get ve Post yapıları sağladık.
-const get = (endpoint: string, headers?: AxiosHeaders, timeout?: number) => {
+const get = (endpoint: string, timeout?: number, headers?: AxiosHeaders) => {
 	return jsonPlaceholderApi.get(endpoint, {
 		headers: headers,
 		signal: AbortSignal.timeout(timeout || 5000),
 	});
 };
 
+// jsonPlaceholderApiClient.get('/users',5000)
+// jsonPlaceholderApiClient.post('/users',{},{headers:{name:'ali'}},7000)
+
 const post = (
 	endpoint: string,
 	data: any,
-	headers?: AxiosHeaders,
-	timeout?: number
+	timeout?: number, // optional
+	headers?: AxiosHeaders
 ) => {
 	return jsonPlaceholderApi.post(endpoint, data, {
 		headers: headers,
