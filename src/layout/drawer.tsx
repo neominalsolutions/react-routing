@@ -16,7 +16,12 @@ const Drawer = () => {
 	];
 
 	return (
-		<Box sx={{ textAlign: 'center' }}>
+		<Box
+			sx={{
+				textAlign: 'center',
+				display: { lg: 'none', md: 'none', xl: 'none', sm: 'none' },
+			}}
+		>
 			<Typography variant="h6" sx={{ my: 2 }}>
 				MUI
 			</Typography>
