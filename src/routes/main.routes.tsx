@@ -1,7 +1,7 @@
 import type { RouteObject } from 'react-router';
-import About from '../pages/about';
-import Home from '../pages/home';
 import MainLayout from '../layout/main/main.layout';
+import Home from '../pages/site/home';
+import About from '../pages/site/about';
 
 const mainRoutes: RouteObject = {
 	path: '',

@@ -1,5 +1,6 @@
 import { type RouteObject } from 'react-router';
 import AdminLayout from '../layout/admin/admin.layout';
+import UserPage from '../pages/admin/page';
 
 const adminRoutes: RouteObject = {
 	path: 'admin',
@@ -11,7 +12,7 @@ const adminRoutes: RouteObject = {
 		},
 		{
 			path: 'users',
-			element: <>Users Page</>,
+			Component: UserPage,
 		},
 	],
 };
