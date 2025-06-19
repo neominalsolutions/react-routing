@@ -1,23 +1,8 @@
 import { createBrowserRouter } from 'react-router';
-import MainLayout from './layout/main.layout';
-import Typography from '@mui/material/Typography';
+import adminRoutes from './routes/admin.routes';
+import mainRoutes from './routes/main.routes';
 
 // routing.config.file
-const router = createBrowserRouter([
-	{
-		path: '',
-		Component: MainLayout,
-		children: [
-			{
-				index: true,
-				element: (
-					<>
-						<Typography variant="h3">Home Page</Typography>
-					</>
-				),
-			},
-		],
-	},
-]);
+const router = createBrowserRouter([mainRoutes, adminRoutes]);
 
 export default router;
