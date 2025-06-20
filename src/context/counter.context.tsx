@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 export interface CounterState {
 	count: number;
@@ -20,6 +20,8 @@ export const CounterContext = createContext<CounterContextType | undefined>(
 
 const CounterProvider = ({ children }: any) => {
 	const [state, setState] = useState<CounterState>(intialValue); // global state useState hook ile Provider function içerisinde tutuluyor ve değiştiriliyor.
+
+	console.log('counter-context');
 
 	const reset = () => {
 		setState({ count: 0 });

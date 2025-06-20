@@ -8,6 +8,8 @@ import CounterProvider from './context/counter.context';
 
 // <CounterProvider> tüm uygulamayı kapsar useContext kullan yerler render olur.
 
+// CounterProvider bu her renderda doam girince component memoize edilse dahi componentin render edilmesini zorluyor.
+
 createRoot(document.getElementById('root')!).render(
 	<CounterProvider>
 		<RouterProvider router={router} />
