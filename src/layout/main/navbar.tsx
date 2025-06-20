@@ -30,6 +30,7 @@ function NavBar() {
 		{ name: 'Admin', path: '/admin' },
 		{ name: 'Context Demo', path: '/context-demo' },
 		{ name: 'Use Memo', path: '/memo/useMemo' },
+		{ name: 'Use Callback', path: '/memo/useCallback' },
 	];
 
 	return (
