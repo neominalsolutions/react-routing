@@ -1,12 +1,12 @@
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Typography from '@mui/material/Typography';
 import type React from 'react';
+import { useContext } from 'react';
 import CounterProvider, {
 	CounterContext,
 	type CounterContextType,
 } from '../../context/counter.context';
-import { useContext } from 'react';
-import Typography from '@mui/material/Typography';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Button from '@mui/material/Button';
 
 function CounterView() {
 	const { state } = useContext(CounterContext) as CounterContextType;
@@ -51,6 +51,7 @@ function ContextDemo() {
 
 	return (
 		<>
+			{/* form step tab için, grid modal gibi local kullanılar için ideal yöntem. */}
 			<CounterProvider>
 				<CounterView />
 				<CounterActions />
