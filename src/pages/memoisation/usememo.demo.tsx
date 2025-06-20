@@ -8,15 +8,14 @@ function UseMemoDemo() {
 	// paranet componenteki state değişimi sonucu ekranda değeri değişmesi gerekenmeyen bir value değeri varsa bu değerin memoize edilmesi gerekir.
 	const calculate = () => {
 		console.log('...calculating');
-		return 0;
+		return 10000;
 	};
 
 	const value = calculate();
 
 	return (
 		<>
-			{value}
-
+			<Typography>Calculated Value: {value}</Typography>
 			<Typography>Random: {random}</Typography>
 			<Button onClick={() => setRandom(Math.random())}>Random</Button>
 		</>
