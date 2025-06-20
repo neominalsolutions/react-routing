@@ -28,6 +28,7 @@ function NavBar() {
 		},
 		{ name: 'About', path: '/about' },
 		{ name: 'Admin', path: '/admin' },
+		{ name: 'Context Demo', path: '/context-demo' },
 	];
 
 	return (
