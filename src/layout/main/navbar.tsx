@@ -31,6 +31,7 @@ function NavBar() {
 		{ name: 'Context Demo', path: '/context-demo' },
 		{ name: 'Use Memo', path: '/memo/useMemo' },
 		{ name: 'Use Callback', path: '/memo/useCallback' },
+		{ name: 'Custom Hook', path: '/hooks' },
 	];
 
 	return (
