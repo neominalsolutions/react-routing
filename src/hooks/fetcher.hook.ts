@@ -9,9 +9,11 @@ type FetcherState<T> = {
 	error: any;
 };
 
+// Hook function içinde hook kullanılabilir.
+
 function useFetcher<T>(endpoint: string) {
 	const [state, setState] = useState<FetcherState<T | any>>({
-		loading: false,
+		loading: true,
 		data: null,
 		error: null,
 	});
@@ -19,15 +21,17 @@ function useFetcher<T>(endpoint: string) {
 	useEffect(() => {
 		setState({ ...state, loading: true, data: null, error: null });
 
-		jsonPlaceholderApiClient
-			.get(endpoint)
-			.then((response) => {
-				const data = response.data as T;
-				setState({ ...state, loading: false, data: data, error: null });
-			})
-			.catch((err) => {
-				setState({ ...state, loading: false, data: null, error: err });
-			});
+		setTimeout(() => {
+			jsonPlaceholderApiClient
+				.get(endpoint)
+				.then((response) => {
+					const data = response.data as T;
+					setState({ ...state, loading: false, data: data, error: null });
+				})
+				.catch((err) => {
+					setState({ ...state, loading: false, data: null, error: err });
+				});
+		}, 5000);
 	}, [endpoint]); // endpoint değişersek birdaha get isteği at
 
 	return state;
