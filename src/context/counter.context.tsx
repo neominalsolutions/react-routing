@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
 export interface CounterState {
 	count: number;

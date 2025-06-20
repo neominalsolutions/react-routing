@@ -1,8 +1,10 @@
 import type { RouteObject } from 'react-router';
-import MainLayout from '../layout/main/main.layout';
-import Home from '../pages/site/home';
-import About from '../pages/site/about';
 import ContextDemo from '../pages/context-demo/page';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('../pages/site/home'));
+const About = lazy(() => import('../pages/site/about'));
+const MainLayout = lazy(() => import('../layout/main/main.layout'));
 
 const mainRoutes: RouteObject = {
 	path: '',
